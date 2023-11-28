@@ -16,6 +16,10 @@
       {
         "command": "bacon-ipsum-vscode.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "bacon-ipsum-vscode.generateBacon",
+        "title": "Generate Bacon ipsum"
       }
     ]
   },

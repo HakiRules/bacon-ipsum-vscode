@@ -19,7 +19,17 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.showInformationMessage('Hello World from Bacon Ipsum Vscode!');
 	});
 
+  let baconIpsum = vscode.commands.registerTextEditorCommand('bacon-ipsum-vscode.generateBacon', async (editor, edit) => {
+    const response = await fetch("https://baconipsum.com/api/?type=all-meat&paras=2&start-with-lorem=1");
+    const texts = await response.json() as string[];
+    editor.edit(currentEditor => {
+      currentEditor.insert(editor.selection.active, texts.join("\n"));
+    });
+    
+	});
+
 	context.subscriptions.push(disposable);
+	context.subscriptions.push(baconIpsum);
 }
 
 // This method is called when your extension is deactivated
